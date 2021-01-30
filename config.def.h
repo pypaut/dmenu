@@ -43,7 +43,7 @@ static const char nord15[] = "#b48ead";  /* Purple */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
 	[SchemeNorm] = { color1, nord0 },
-	[SchemeSel]  = { color2, nord3 },
+	[SchemeSel]  = { color2, nord10 },
 	[SchemeOut]  = { color3, color4 },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
