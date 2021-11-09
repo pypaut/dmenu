@@ -6,7 +6,7 @@ static int centered = 1;                    /* -c option; centers dmenu on scree
 static int min_width = 500;                    /* minimum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"Iosevka Nerd Font Mono:style=Medium:size=12"
+	"Iosevka Nerd Font Mono:style=Medium:size=11"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 
@@ -39,10 +39,11 @@ static const char nord12[] = "#d08770";  /* Orange */
 static const char nord13[] = "#ebcb8b";  /* Yellow */
 static const char nord14[] = "#a3be8c";  /* Green */
 static const char nord15[] = "#b48ead";  /* Purple */
+static const char blackblue[] = "#0e1420";  /* Black blue */
 
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { color1, nord3 },
+	[SchemeNorm] = { color1, blackblue },
 	[SchemeSel]  = { color2, nord10 },
 	[SchemeOut]  = { color3, color4 },
 };
