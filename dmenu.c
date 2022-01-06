@@ -148,8 +148,10 @@ drawitem(struct item *item, int x, int y, int w)
 
 	offset = (lines > 0) ? (w - (TEXTW(item->text) - lrpad)) / 2 : lrpad / 2;
 
-	// r = drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);  // Not centered
-	r = drw_text(drw, x, y, w, bh, offset, item->text, 0);  // Centered
+	if (centered_text)
+		r = drw_text(drw, x, y, w, bh, offset, item->text, 0);
+	else
+		r = drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);
 
     return r;
 }
@@ -200,7 +202,10 @@ drawmenu(void)
 	}
 
 	/* draw input field */
-	int x_text = computewordpos(text, w);
+	int x_text = 0;
+	if (centered_text) {
+		x_text = computewordpos(text, w);
+	}
 	w = drawsearchtext(x_text, y, w);
 	curpos = drawtextcursor(x_text, w, curpos);
 
