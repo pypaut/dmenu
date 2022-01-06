@@ -6,6 +6,7 @@ static int centered = 1;                    /* -c option; centers dmenu on scree
 static int min_width = 200;                 /* minimum width when centered */
 static const unsigned int border_width = 2; /* border width */
 static int centered_text = 1;               /* center text inside window */
+static int show_cursor = 1;                 /* show cursor in input field */
 
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines = 1;

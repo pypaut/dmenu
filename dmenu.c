@@ -206,8 +206,11 @@ drawmenu(void)
 	if (centered_text) {
 		x_text = computewordpos(text, w);
 	}
+
 	w = drawsearchtext(x_text, y, w);
-	curpos = drawtextcursor(x_text, w, curpos);
+	if (show_cursor) {
+		curpos = drawtextcursor(x_text, w, curpos);
+	}
 
 	/* draw items */
 	if (lines > 0) {
