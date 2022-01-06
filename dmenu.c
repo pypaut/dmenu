@@ -157,7 +157,7 @@ drawitem(struct item *item, int x, int y, int w)
 }
 
 static int
-drawsearchtext(int x, int y, int w)
+drawinputtext(int x, int y, int w)
 {
 	w = (lines > 0 || !matches) ? mw - x : inputw;
 	drw_setscheme(drw, scheme[SchemeNorm]);
@@ -207,7 +207,7 @@ drawmenu(void)
 		x_text = computewordpos(text, w);
 	}
 
-	w = drawsearchtext(x_text, y, w);
+	w = drawinputtext(x_text, y, w);
 	if (show_cursor) {
 		curpos = drawtextcursor(x_text, w, curpos);
 	}
