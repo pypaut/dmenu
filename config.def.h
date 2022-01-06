@@ -20,7 +20,7 @@ static const char worddelimiters[] = " ";
 
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"Iosevka Nerd Font Mono:style=Medium:size=12"
+    "Iosevka Nerd Font Mono:style=Medium:size=12"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 
@@ -77,10 +77,10 @@ static const char drac_red[]         = "#ff5555";
 static const char drac_yellow[]      = "#f1fa8c";
 
 static const char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
-	[SchemeNorm]   = { color2, drac_background },
-	[SchemeSel]    = { drac_purple, drac_background },
-	[SchemeOut]    = { color3, color4 },
+    /*     fg         bg       */
+    [SchemeNorm]   = { color2, drac_background },
+    [SchemeSel]    = { drac_purple, drac_background },
+    [SchemeOut]    = { color3, color4 },
     [SchemeBorder] = { drac_purple, drac_purple },
 };
 
