@@ -160,7 +160,17 @@ drawsearchtext(int x, int y, int w)
 	w = (lines > 0 || !matches) ? mw - x : inputw;
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	drw_text(drw, x, 0, w, bh, lrpad / 2, text, 0);
-    return w;
+	return w;
+}
+
+static int
+drawtextcursor(int x, int w, int curpos)
+{
+	curpos = TEXTW(text) - TEXTW(&text[cursor]);
+	if ((curpos += lrpad / 2 - 1) < w) {
+		drw_setscheme(drw, scheme[SchemeNorm]);
+		drw_rect(drw, x + curpos, 2, 2, bh - 4, 1, 0);
+	}
 }
 
 static void
@@ -178,14 +188,11 @@ drawmenu(void)
 		x = drw_text(drw, x, 0, promptw, bh, lrpad / 2, prompt, 0);
 	}
 
+	/* draw input field */
 	w = drawsearchtext(x, y, w);
+	curpos = drawtextcursor(x, w, curpos);
 
-	curpos = TEXTW(text) - TEXTW(&text[cursor]);
-	if ((curpos += lrpad / 2 - 1) < w) {
-		drw_setscheme(drw, scheme[SchemeNorm]);
-		drw_rect(drw, x + curpos, 2, 2, bh - 4, 1, 0);
-	}
-
+	/* draw items */
 	if (lines > 0) {
 		/* draw vertical list */
 		for (item = curr; item != next; item = item->right)
