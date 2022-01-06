@@ -2,11 +2,11 @@
 /* Default settings; can be overriden by command line. */
 
 static int topbar = 0;                      /* -b  option; if 0, dmenu appears at bottom     */
-static int centered = 0;                    /* -c option; centers dmenu on screen */
+static int centered = 1;                    /* -c option; centers dmenu on screen */
 static int min_width = 500;                    /* minimum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"Iosevka Nerd Font Mono:style=Medium:size=9"
+	"Iosevka Nerd Font Mono:style=Medium:size=12"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 
@@ -64,13 +64,16 @@ static const char drac_yellow[]      = "#f1fa8c";
 
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { color2, drac_background },
-	[SchemeSel]  = { drac_purple, drac_background },
-	[SchemeOut]  = { color3, color4 },
+	[SchemeNorm]   = { color2, drac_background },
+	[SchemeSel]    = { drac_purple, drac_background },
+	[SchemeOut]    = { color3, color4 },
+    [SchemeBorder] = { drac_purple, drac_purple },
 };
 
+// static const char BorderColor[] = drac_purple;
+
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
-static unsigned int lines = 0;
+static unsigned int lines = 1;
 
 /*
  * Characters not considered part of a word while deleting words
@@ -79,4 +82,4 @@ static unsigned int lines = 0;
 static const char worddelimiters[] = " ";
 
 /* Size of the window border */
-static const unsigned int border_width = 0;
+static const unsigned int border_width = 2;
