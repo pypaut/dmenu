@@ -131,9 +131,14 @@ cistrstr(const char *s, const char *sub)
 	return NULL;
 }
 
+/*
+ * drawitem : draw items of the list (not the search field)
+ */
 static int
 drawitem(struct item *item, int x, int y, int w)
 {
+	int r, offset;
+
 	if (item == sel)
 		drw_setscheme(drw, scheme[SchemeSel]);
 	else if (item->out)
@@ -141,7 +146,12 @@ drawitem(struct item *item, int x, int y, int w)
 	else
 		drw_setscheme(drw, scheme[SchemeNorm]);
 
-	return drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);
+	offset = (lines > 0) ? (w - (TEXTW(item->text) - lrpad)) / 2 : lrpad / 2;
+
+	// r = drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);  // Not centered
+	r = drw_text(drw, x, y, w, bh, offset, item->text, 0);  // Centered
+
+    return r;
 }
 
 static void
