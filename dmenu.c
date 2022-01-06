@@ -171,6 +171,16 @@ drawtextcursor(int x, int w, int curpos)
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		drw_rect(drw, x + curpos, 2, 2, bh - 4, 1, 0);
 	}
+
+	return curpos;
+}
+
+static int
+computewordpos(char *text, int w)
+{
+	int init_pos = mw / 2;  // mw is the total with of dmenu window
+	int len = TEXTW(text);
+	return init_pos - (len / 2);
 }
 
 static void
@@ -183,14 +193,16 @@ drawmenu(void)
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	drw_rect(drw, 0, 0, mw, mh, 1, 1);
 
+	/* draw prompt */
 	if (prompt && *prompt) {
 		drw_setscheme(drw, scheme[SchemeSel]);
 		x = drw_text(drw, x, 0, promptw, bh, lrpad / 2, prompt, 0);
 	}
 
 	/* draw input field */
-	w = drawsearchtext(x, y, w);
-	curpos = drawtextcursor(x, w, curpos);
+	int x_text = computewordpos(text, w);
+	w = drawsearchtext(x_text, y, w);
+	curpos = drawtextcursor(x_text, w, curpos);
 
 	/* draw items */
 	if (lines > 0) {
