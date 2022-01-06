@@ -154,6 +154,15 @@ drawitem(struct item *item, int x, int y, int w)
     return r;
 }
 
+static int
+drawsearchtext(int x, int y, int w)
+{
+	w = (lines > 0 || !matches) ? mw - x : inputw;
+	drw_setscheme(drw, scheme[SchemeNorm]);
+	drw_text(drw, x, 0, w, bh, lrpad / 2, text, 0);
+    return w;
+}
+
 static void
 drawmenu(void)
 {
@@ -168,10 +177,8 @@ drawmenu(void)
 		drw_setscheme(drw, scheme[SchemeSel]);
 		x = drw_text(drw, x, 0, promptw, bh, lrpad / 2, prompt, 0);
 	}
-	/* draw input field */
-	w = (lines > 0 || !matches) ? mw - x : inputw;
-	drw_setscheme(drw, scheme[SchemeNorm]);
-	drw_text(drw, x, 0, w, bh, lrpad / 2, text, 0);
+
+	w = drawsearchtext(x, y, w);
 
 	curpos = TEXTW(text) - TEXTW(&text[cursor]);
 	if ((curpos += lrpad / 2 - 1) < w) {
