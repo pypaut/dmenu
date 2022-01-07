@@ -213,25 +213,27 @@ drawmenu(void)
     }
 
     /* draw items */
-    if (lines > 0) {
-        /* draw vertical list */
-        for (item = curr; item != next; item = item->right)
-            drawitem(item, x, y += bh, mw - x);
-    } else if (matches) {
-        /* draw horizontal list */
-        x += inputw;
-        w = TEXTW("<");
-        if (curr->left) {
-            drw_setscheme(drw, scheme[SchemeNorm]);
-            drw_text(drw, x, 0, w, bh, lrpad / 2, "<", 0);
-        }
-        x += w;
-        for (item = curr; item != next; item = item->right)
-            x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(">")));
-        if (next) {
-            w = TEXTW(">");
-            drw_setscheme(drw, scheme[SchemeNorm]);
-            drw_text(drw, mw - w, 0, w, bh, lrpad / 2, ">", 0);
+    if (strlen(text) > 0) {
+        if (lines > 0) {
+            /* draw vertical list */
+            for (item = curr; item != next; item = item->right)
+                drawitem(item, x, y += bh, mw - x);
+        } else if (matches) {
+            /* draw horizontal list */
+            x += inputw;
+            w = TEXTW("<");
+            if (curr->left) {
+                drw_setscheme(drw, scheme[SchemeNorm]);
+                drw_text(drw, x, 0, w, bh, lrpad / 2, "<", 0);
+            }
+            x += w;
+            for (item = curr; item != next; item = item->right)
+                x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(">")));
+            if (next) {
+                w = TEXTW(">");
+                drw_setscheme(drw, scheme[SchemeNorm]);
+                drw_text(drw, mw - w, 0, w, bh, lrpad / 2, ">", 0);
+            }
         }
     }
     drw_map(drw, win, 0, 0, mw, mh);
