@@ -4,9 +4,9 @@
 static int topbar = 0;                      /* -b  option; if 0, dmenu appears at bottom */
 static int centered = 1;                    /* -c option; centers dmenu on screen */
 static int min_width = 100;                 /* minimum width when centered */
-static const unsigned int border_width = 2; /* border width */
+static const unsigned int border_width = 3; /* border width */
 static int centered_text = 1;               /* center text inside window */
-static int show_cursor = 1;                 /* show cursor in input field */
+static int show_cursor = 0;                 /* show cursor in input field */
 
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines = 3;
@@ -67,15 +67,21 @@ static const char drac_pink[]        = "#ff79c6";
 static const char drac_purple[]      = "#bd93f9";
 static const char drac_red[]         = "#ff5555";
 static const char drac_yellow[]      = "#f1fa8c";
+/* Win95 */
+static const char win_blue[]      = "#050582";
+static const char win_white[]     = "#ffffff";
+static const char win_black[]     = "#000000";
+static const char win_gray[]      = "#c1c1c1";
+static const char win_darkgray[]  = "#808080";
 
 /* Nord */
-static const char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
-	[SchemeNorm] = { color1, blackblue },
-	[SchemeSel]  = { color2, blackblue },
-	[SchemeOut]  = { snow3, snow3 },
-	[SchemeBorder] = { frost3, frost3 },
-};
+// static const char *colors[SchemeLast][2] = {
+// 	/*     fg         bg       */
+// 	[SchemeNorm] = { color1, blackblue },
+// 	[SchemeSel]  = { color2, blackblue },
+// 	[SchemeOut]  = { snow3, snow3 },
+// 	[SchemeBorder] = { frost3, frost3 },
+// };
 
 /* Dracula */
 // static const char *colors[SchemeLast][2] = {
@@ -85,3 +91,12 @@ static const char *colors[SchemeLast][2] = {
 //     [SchemeOut]    = { color3, color4 },
 //     [SchemeBorder] = { drac_purple, drac_purple },
 // };
+
+/* Win95 */
+static const char *colors[SchemeLast][2] = {
+	/*     fg         bg       */
+	[SchemeNorm]   = { win_black,    win_gray  },       // Text, not selected
+	[SchemeSel]    = { win_gray,     win_darkgray },    // Text, selected
+	[SchemeOut]    = { win_black,    win_black },       // I don't know
+	[SchemeBorder] = { win_darkgray, win_darkgray },    // Border
+};
