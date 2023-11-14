@@ -2,14 +2,14 @@
 /* Default settings; can be overriden by command line. */
 
 static int topbar = 0;                      /* -b  option; if 0, dmenu appears at bottom */
-static int centered = 1;                    /* -c option; centers dmenu on screen */
+static int centered = 0;                    /* -c option; centers dmenu on screen */
 static int min_width = 100;                 /* minimum width when centered */
-static const unsigned int border_width = 3; /* border width */
-static int centered_text = 1;               /* center text inside window */
+static const unsigned int border_width = 0; /* border width */
+static int centered_text = 0;               /* center text inside window */
 static int show_cursor = 0;                 /* show cursor in input field */
 
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
-static unsigned int lines = 3;
+static unsigned int lines = 0;
 
 /*
  * Characters not considered part of a word while deleting words
@@ -19,9 +19,7 @@ static const char worddelimiters[] = " ";
 
 
 /* -fn option overrides fonts[0]; default X11 font or font set */
-static const char *fonts[] = {
-    "Iosevka:style=Medium:size=30"
-};
+static const char *fonts[] = { "Iosevka:style=Medium:size=10" };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 
 /**********/
@@ -75,13 +73,13 @@ static const char win_gray[]      = "#c1c1c1";
 static const char win_darkgray[]  = "#808080";
 
 /* Nord */
-// static const char *colors[SchemeLast][2] = {
-// 	/*     fg         bg       */
-// 	[SchemeNorm] = { color1, blackblue },
-// 	[SchemeSel]  = { color2, blackblue },
-// 	[SchemeOut]  = { snow3, snow3 },
-// 	[SchemeBorder] = { frost3, frost3 },
-// };
+static const char *colors[SchemeLast][2] = {
+	/*     fg         bg       */
+	[SchemeNorm] = { color1, polar1 },
+	[SchemeSel]  = { color2, polar1 },
+	[SchemeOut]  = { snow3, snow3 },
+	[SchemeBorder] = { frost3, frost3 },
+};
 
 /* Dracula */
 // static const char *colors[SchemeLast][2] = {
@@ -93,10 +91,10 @@ static const char win_darkgray[]  = "#808080";
 // };
 
 /* Win95 */
-static const char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
-	[SchemeNorm]   = { win_black,    win_gray  },       // Text, not selected
-	[SchemeSel]    = { win_gray,     win_darkgray },    // Text, selected
-	[SchemeOut]    = { win_black,    win_black },       // I don't know
-	[SchemeBorder] = { win_darkgray, win_darkgray },    // Border
-};
+// static const char *colors[SchemeLast][2] = {
+// 	/*     fg         bg       */
+// 	[SchemeNorm]   = { win_black,    win_gray  },       // Text, not selected
+// 	[SchemeSel]    = { win_gray,     win_darkgray },    // Text, selected
+// 	[SchemeOut]    = { win_black,    win_black },       // I don't know
+// 	[SchemeBorder] = { win_darkgray, win_darkgray },    // Border
+// };
